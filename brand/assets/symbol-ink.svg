@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="176.91 166.4 670.18 691.2"><defs><linearGradient id="sym-ink-o0" x1="0" y1="311.96" x2="0" y2="671.54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff6b58"/><stop offset="1" stop-color="#f05641"/>
+    </linearGradient>
+    <linearGradient id="sym-ink-o1" x1="0" y1="192" x2="0" y2="474.87" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4497ff"/><stop offset="1" stop-color="#2c83f0"/>
+    </linearGradient>
+    <linearGradient id="sym-ink-o2" x1="0" y1="490.73" x2="0" y2="720.87" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2dca8c"/><stop offset="1" stop-color="#15b877"/>
+    </linearGradient>
+    <linearGradient id="sym-ink-o3" x1="0" y1="659.4" x2="0" y2="832" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#966cff"/><stop offset="1" stop-color="#8256f0"/>
+    </linearGradient></defs><circle cx="382.3" cy="491.75" r="179.79" fill="url(#sym-ink-o0)"/>
+    <circle cx="680.05" cy="333.43" r="141.43" fill="url(#sym-ink-o1)"/>
+    <circle cx="671.48" cy="605.8" r="115.07" fill="url(#sym-ink-o2)"/>
+    <circle cx="505.12" cy="745.7" r="86.3" fill="url(#sym-ink-o3)"/></svg>
