@@ -1,0 +1,674 @@
+/* ===========================================================================
+   Lyra UI, for marketing renders.
+   A faithful copy of the app's chrome (src/renderer/styles.css), new tab
+   page (src/newtab/newtab.css), results panel and clusters plane, scoped
+   under .ly-window so a page can show the product without running it.
+   Sizes are the app's real CSS pixels; scale with `zoom`.
+   =========================================================================== */
+
+.ly-window {
+  --ly-paper: #ffffff;
+  --ly-surface: #f2f3f5;
+  --ly-surface-deep: #e8eaee;
+  --ly-rule: #e3e5e9;
+  --ly-ink: #191b1f;
+  --ly-graphite: #6e737b;
+  --ly-graphite-soft: #9ba0a8;
+  --ly-mark: #e8a33d;
+  --ly-mark-wash: rgba(232, 163, 61, 0.26);
+  --ly-hover: rgba(25, 27, 31, 0.055);
+  --ly-press: rgba(25, 27, 31, 0.105);
+  --ly-font: 'Atkinson Hyperlegible Next', system-ui, 'Segoe UI', sans-serif;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 9px;
+  background: var(--ly-paper);
+  color: var(--ly-ink);
+  font-family: var(--ly-font);
+  font-size: 13px;
+  line-height: normal;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  cursor: default;
+  box-shadow:
+    0 0 0 1px rgba(25, 27, 31, 0.1),
+    0 2px 6px rgba(25, 27, 31, 0.06),
+    0 24px 48px -16px rgba(25, 27, 31, 0.28),
+    0 60px 120px -40px rgba(25, 27, 31, 0.32);
+}
+
+.ly-window * {
+  box-sizing: border-box;
+}
+
+.ly-window svg use {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Windows 11 title bar (the app keeps the native frame) --------------- */
+
+.ly-titlebar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding-left: 12px;
+  background: var(--ly-paper);
+  color: var(--ly-ink);
+  font: 12px 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+}
+
+.ly-titlebar img {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.ly-titlebar .ly-caption {
+  display: flex;
+  margin-left: auto;
+  height: 100%;
+}
+
+.ly-caption span {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 100%;
+}
+
+.ly-caption svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: var(--ly-ink);
+  stroke-width: 1;
+}
+
+/* --- The one row --------------------------------------------------------- */
+
+.ly-bar {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 8px;
+  background: var(--ly-paper);
+  box-shadow: inset 0 -1px 0 var(--ly-rule);
+}
+
+.ly-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+}
+
+.ly-btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: var(--ly-graphite);
+}
+
+.ly-btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.ly-btn.off {
+  color: #c6cad0;
+}
+
+.ly-btn.on {
+  background: var(--ly-surface-deep);
+  color: var(--ly-ink);
+}
+
+.ly-new {
+  margin-left: auto;
+}
+
+.ly-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1 1 340px;
+  min-width: 190px;
+  max-width: 720px;
+  height: 30px;
+  padding: 0 4px 0 10px;
+  border: 1px solid var(--ly-rule);
+  border-radius: 8px;
+  background: var(--ly-paper);
+}
+
+.ly-field::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 1px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ly-mark-wash);
+  pointer-events: none;
+}
+
+.ly-field.loading::after {
+  background: linear-gradient(90deg, var(--ly-mark-wash) 0%, var(--ly-mark) 45%, var(--ly-mark) 55%, var(--ly-mark-wash) 100%);
+  background-size: 250% 100%;
+  background-position: 40% 0;
+  animation: ly-sweep 1.15s linear infinite;
+}
+
+.ly-field.editing {
+  border-color: var(--ly-ink);
+}
+
+.ly-field.editing::after,
+.ly-field.blank:not(.loading)::after {
+  opacity: 0;
+}
+
+@keyframes ly-sweep {
+  from {
+    background-position: 160% 0;
+  }
+  to {
+    background-position: -160% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ly-field.loading::after {
+    animation: none;
+  }
+}
+
+.ly-field-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  color: var(--ly-graphite);
+}
+
+.ly-field-icon svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.ly-field-icon.secure {
+  color: var(--ly-ink);
+}
+
+.ly-field-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ly-host {
+  flex: 0 0 auto;
+  max-width: 55%;
+  letter-spacing: -0.006em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ly-ink);
+}
+
+.ly-title {
+  flex: 0 1 auto;
+  min-width: 0;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ly-graphite);
+}
+
+.ly-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--ly-ink);
+}
+
+.ly-input .sel {
+  background: var(--ly-mark-wash);
+}
+
+.ly-input .ph {
+  color: var(--ly-graphite-soft);
+}
+
+.ly-input .caret {
+  display: inline-block;
+  width: 1px;
+  height: 15px;
+  margin-left: 1px;
+  vertical-align: -3px;
+  background: var(--ly-ink);
+}
+
+.ly-act {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  color: var(--ly-graphite);
+}
+
+.ly-act svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.ly-act.on svg use {
+  fill: var(--ly-mark);
+  stroke: var(--ly-mark);
+}
+
+.ly-chips {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ly-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 148px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 6px;
+  color: var(--ly-graphite);
+  white-space: nowrap;
+}
+
+.ly-chip span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ly-chip.hover {
+  background: var(--ly-hover);
+  color: var(--ly-ink);
+}
+
+/* A favicon stand-in: the only chroma in the chrome comes from sites. */
+.ly-fav {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.ly-fav.letter {
+  background: var(--ly-surface-deep);
+  color: var(--ly-graphite);
+  font-weight: 600;
+}
+
+.ly-fav svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+/* --- Page area ------------------------------------------------------------ */
+
+.ly-page {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--ly-paper);
+}
+
+/* --- New tab page ------------------------------------------------------- */
+
+.ly-ntp {
+  max-width: 34rem;
+  padding: 72px 32px 40px 104px;
+  font-size: 14px;
+}
+
+.ly-wordmark {
+  margin: 0 0 28px;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.ly-wordmark span {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.08em;
+}
+
+.ly-wordmark span::after {
+  content: '';
+  position: absolute;
+  left: -0.06em;
+  right: -0.14em;
+  bottom: 0.08em;
+  height: 0.32em;
+  background: var(--ly-mark-wash);
+  border-radius: 1px;
+  mix-blend-mode: multiply;
+}
+
+.ly-go {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  margin: 0 0 44px;
+  padding: 0 16px;
+  border: 1px solid var(--ly-rule);
+  border-radius: 8px;
+  color: var(--ly-graphite-soft);
+  font-size: 15px;
+}
+
+.ly-group {
+  margin: 0 0 32px;
+}
+
+.ly-group h4 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ly-graphite-soft);
+  letter-spacing: 0.01em;
+}
+
+.ly-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+.ly-entry.hover {
+  background: var(--ly-hover);
+}
+
+.ly-entry .h {
+  color: var(--ly-graphite);
+  font-size: 12px;
+}
+
+.ly-balls {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--ly-rule);
+  border-radius: 999px;
+  color: var(--ly-graphite);
+  opacity: 0.45;
+}
+
+.ly-balls.on {
+  color: var(--ly-ink);
+}
+
+/* The toy's balls, at rest on the floor of the page. */
+.ly-toy {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1100px;
+  height: 100px;
+  pointer-events: none;
+}
+
+.ly-balls svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+/* --- Results panel (Ctrl+K) -------------------------------------------- */
+
+.ly-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  padding: 6px;
+  background: var(--ly-paper);
+  border-bottom: 1px solid var(--ly-rule);
+  box-shadow: 0 10px 26px -12px rgba(25, 27, 31, 0.3);
+}
+
+.ly-result {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.ly-result.sel {
+  background: var(--ly-surface);
+}
+
+.ly-result .i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  color: var(--ly-graphite);
+}
+
+.ly-result .i svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ly-result .d {
+  color: var(--ly-graphite);
+  font-size: 12px;
+}
+
+.ly-result .k {
+  margin-left: auto;
+  padding-left: 10px;
+  color: var(--ly-graphite-soft);
+  font-size: 12px;
+}
+
+/* --- Clusters plane ----------------------------------------------------- */
+
+.ly-plane {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--ly-rule) 1px, transparent 1.25px);
+  background-size: 24px 24px;
+  background-position: center;
+}
+
+.ly-plane > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ly-plane .tether {
+  stroke: var(--ly-graphite-soft);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+}
+
+.ly-node {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.ly-master {
+  position: absolute;
+  left: -42px;
+  top: -42px;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--ly-ink);
+  color: var(--ly-paper);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(25, 27, 31, 0.12), 0 8px 20px -10px rgba(25, 27, 31, 0.45);
+}
+
+.ly-node.here .ly-master {
+  box-shadow: 0 0 0 3px var(--ly-paper), 0 0 0 5px var(--ly-mark), 0 8px 20px -10px rgba(25, 27, 31, 0.45);
+}
+
+.ly-count {
+  position: absolute;
+  top: 48px;
+  left: -60px;
+  width: 120px;
+  color: var(--ly-graphite);
+  font-size: 12px;
+  text-align: center;
+}
+
+.ly-node.here .ly-count,
+.ly-node.live .ly-count {
+  color: var(--ly-ink);
+}
+
+.ly-tab {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--ly-paper);
+  box-shadow: inset 0 0 0 1px var(--ly-rule), 0 1px 2px rgba(25, 27, 31, 0.08), 0 4px 10px -6px rgba(25, 27, 31, 0.3);
+}
+
+.ly-tab .ly-fav {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.ly-node.here .ly-tab {
+  box-shadow: inset 0 0 0 1px var(--ly-rule), 0 0 0 3px var(--ly-paper), 0 0 0 5px var(--ly-mark);
+}
+
+.ly-label {
+  position: absolute;
+  top: 25px;
+  left: -52px;
+  width: 104px;
+  overflow: hidden;
+  color: var(--ly-graphite);
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ly-node.here .ly-label {
+  color: var(--ly-ink);
+}
+
+.ly-floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 92px;
+  background: var(--ly-paper);
+  box-shadow: inset 0 1px 0 var(--ly-rule);
+}
+
+.ly-floor-label {
+  position: absolute;
+  top: 7px;
+  left: 16px;
+  color: var(--ly-graphite-soft);
+  font-size: 12px;
+}
+
+.ly-toolbar {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.ly-toolbar span {
+  display: grid;
+  place-items: center;
+  height: 28px;
+  padding: 0 11px;
+  border-radius: 6px;
+  background: var(--ly-surface);
+}
