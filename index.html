@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lyra: browse lightly</title>
+    <meta name="description" content="Lyra is a small, quiet browser for Windows, for everything that takes five minutes." />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lyra: browse lightly" />
+    <meta property="og:description" content="The small, quiet browser for everything that takes five minutes." />
+    <meta property="og:image" content="https://andrewchampagne.github.io/lyra/assets/og.png" />
+    <meta property="og:url" content="https://andrewchampagne.github.io/lyra/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preload" href="assets/fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/lyra-ui.css?v=c0623823" />
+    <link rel="stylesheet" href="assets/site.css?v=03e28505" />
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true"><defs>
+<g id="i-back"><path d="M10 3.5 5.5 8l4.5 4.5" /></g>
+<g id="i-forward"><path d="M6 3.5 10.5 8 6 12.5" /></g>
+<g id="i-reload"><path d="M13 8a5 5 0 1 1-1.6-3.7" /><path d="M13.2 2.4v2.9h-2.9" /></g>
+<g id="i-plus"><path d="M8 3.6v8.8M3.6 8h8.8" /></g>
+<g id="i-close"><path d="M4.2 4.2l7.6 7.6M11.8 4.2l-7.6 7.6" /></g>
+<g id="i-lock"><rect x="3.6" y="7.2" width="8.8" height="5.6" rx="1.3" /><path d="M5.8 7.2V5.6a2.2 2.2 0 0 1 4.4 0v1.6" /></g>
+<g id="i-globe"><circle cx="8" cy="8" r="4.9" /><path d="M3.1 8h9.8M8 3.1c1.3 1.4 2 3.1 2 4.9s-.7 3.5-2 4.9c-1.3-1.4-2-3.1-2-4.9s.7-3.5 2-4.9Z" /></g>
+<g id="i-lyra"><circle cx="5.2" cy="7.3" r="2.7" /><circle cx="11.6" cy="3.9" r="1.9" /><circle cx="11.4" cy="10" r="1.5" /><circle cx="7.5" cy="13.1" r=".9" /></g>
+<g id="i-pin"><path d="m8 2.8 1.7 3.5 3.8.5-2.8 2.7.7 3.7L8 11.5l-3.4 1.7.7-3.7L2.5 6.8l3.8-.5Z" /></g>
+<g id="i-search"><circle cx="7.2" cy="7.2" r="3.9" /><path d="M10.2 10.2 13 13" /></g>
+<g id="i-arrow"><path d="M3.5 8h9M8.6 4.1 12.5 8l-3.9 3.9" /></g>
+<g id="i-cluster"><circle cx="8" cy="8.4" r="2.3" /><circle cx="3.4" cy="4" r="1.3" /><circle cx="12.6" cy="4" r="1.3" /><circle cx="8" cy="13.9" r="1.1" /><path d="M6.3 6.8 4.4 5M9.7 6.8 11.6 5M8 10.7v2.1" /></g>
+</defs></svg>
+    <svg class="sprite" aria-hidden="true">
+      <defs>
+        <g id="i-download"><path d="M8 2.8v7.6M4.6 7.2 8 10.6l3.4-3.4M3.4 13.2h9.2" /></g>
+      </defs>
+    </svg>
+
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" id="nav">
+      <div class="wrap">
+        <a class="brand" href="./" aria-label="Lyra home">
+          <img src="assets/icons/favicon.svg" alt="" width="28" height="28" />
+          Lyra
+        </a>
+        <ul class="nav-links">
+          <li><a href="#clusters">Clusters</a></li>
+          <li><a href="#mission">Mission</a></li>
+        </ul>
+        <a class="btn btn-small js-download" href="https://github.com/andrewchampagne/lyra/releases/latest">Download</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 1. Hero: the promise and the product ============================ -->
+      <section class="hero light">
+        <div class="wrap">
+          <h1 class="display" data-reveal>Browse lightly.</h1>
+          <p class="sub" data-reveal style="--d: 120ms">The small, quiet browser for everything that takes five minutes.</p>
+          <div class="cta" data-reveal style="--d: 220ms">
+            <a class="btn js-download" href="https://github.com/andrewchampagne/lyra/releases/latest">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#i-download" /></svg>
+              Download for Windows
+            </a>
+          </div>
+          <p class="fine" data-reveal style="--d: 280ms">Version 0.2.0, for Windows 10 and 11.</p>
+          <p class="fine" id="os-note" hidden>Lyra runs on Windows. You can download it here and move it to a Windows PC.</p>
+        </div>
+
+        <div class="device-stage">
+          <div class="device-glow" aria-hidden="true"></div>
+          <div class="device" id="device" role="img" aria-label="A laptop showing Lyra's new tab page">
+            <div class="device-lid">
+              <div class="device-screen boot" id="stage"><div class="ly-window" style="width:1100px;height:680px;">
+  <div class="ly-titlebar"><img src="assets/icons/app-icon.svg" alt=""><span>Lyra</span>
+  <span class="ly-caption">
+    <span><svg viewBox="0 0 10 10"><path d="M0 5.5h10"/></svg></span>
+    <span><svg viewBox="0 0 10 10"><rect x=".5" y=".5" width="9" height="9" rx="1.5"/></svg></span>
+    <span><svg viewBox="0 0 10 10"><path d="M.5.5l9 9M9.5.5l-9 9"/></svg></span>
+  </span></div>
+  <div class="ly-bar">
+  <div class="ly-nav"><span class="ly-btn"><svg viewBox="0 0 16 16"><use href="#i-back" /></svg></span><span class="ly-btn off"><svg viewBox="0 0 16 16"><use href="#i-forward" /></svg></span></div>
+  <div class="ly-field blank"><span class="ly-field-icon"><svg viewBox="0 0 16 16"><use href="#i-lyra" /></svg></span><span class="ly-field-line"><span class="ly-title">New tab</span></span><span class="ly-act"><svg viewBox="0 0 16 16"><use href="#i-reload" /></svg></span></div>
+  <span class="ly-btn"><svg viewBox="0 0 16 16"><use href="#i-cluster" /></svg></span>
+  <div class="ly-chips"><span class="ly-chip"><span class="ly-fav" style="background:#16C47F">T</span><span>Departures, Central</span></span><span class="ly-chip"><span class="ly-fav" style="background:#2F8BFF">W</span><span>Rain after four</span></span><span class="ly-chip"><span class="ly-fav letter">L</span><span>Orders</span></span><span class="ly-chip"><span class="ly-fav" style="background:#FFC21F">R</span><span>Lemon pasta</span></span></div>
+  <span class="ly-btn ly-new"><svg viewBox="0 0 16 16"><use href="#i-plus" /></svg></span>
+</div>
+  <div class="ly-page"><div class="ly-ntp">
+  <h1 class="ly-wordmark"><span>Lyra</span></h1>
+  <div class="ly-go">type to go somewhere</div>
+  <div class="ly-group"><h4>pinned</h4><div class="ly-entry"><span>Departures, Central</span><span class="h">trains.example</span></div><div class="ly-entry"><span>Rain after four</span><span class="h">weather.example</span></div></div>
+  <div class="ly-group"><h4>earlier</h4><div class="ly-entry"><span>Lemon pasta</span><span class="h">recipes.example</span></div><div class="ly-entry"><span>Array.prototype.at()</span><span class="h">docs.example</span></div><div class="ly-entry"><span>Return a parcel</span><span class="h">post.example</span></div></div>
+</div><svg class="ly-toy" viewBox="0 -100 1100 100" preserveAspectRatio="xMinYMax meet" aria-hidden="true"><ellipse cx="628" cy="-2" rx="28.5" ry="4" fill="#191b1f" opacity=".14"/>
+<ellipse cx="628" cy="-28.8" rx="31.2" ry="28.8" fill="#2f8bff" stroke="rgba(25,27,31,.1)"/>
+<ellipse cx="614.9" cy="-42.6" rx="7.5" ry="4.6" fill="#fff" opacity=".45" transform="rotate(-30 614.9 -42.6)"/><ellipse cx="701" cy="-2" rx="38.0" ry="4" fill="#191b1f" opacity=".14"/>
+<ellipse cx="701" cy="-38.4" rx="41.6" ry="38.4" fill="#16c47f" stroke="rgba(25,27,31,.1)"/>
+<ellipse cx="683.5" cy="-56.8" rx="10.0" ry="6.1" fill="#fff" opacity=".45" transform="rotate(-30 683.5 -56.8)"/><ellipse cx="771" cy="-2" rx="25.6" ry="4" fill="#191b1f" opacity=".14"/>
+<ellipse cx="771" cy="-25.9" rx="28.1" ry="25.9" fill="#8a5cff" stroke="rgba(25,27,31,.1)"/>
+<ellipse cx="759.2" cy="-38.4" rx="6.7" ry="4.1" fill="#fff" opacity=".45" transform="rotate(-30 759.2 -38.4)"/><ellipse cx="835" cy="-2" rx="32.3" ry="4" fill="#191b1f" opacity=".14"/>
+<ellipse cx="835" cy="-32.6" rx="35.4" ry="32.6" fill="#ff5b45" stroke="rgba(25,27,31,.1)"/>
+<ellipse cx="820.1" cy="-48.3" rx="8.5" ry="5.2" fill="#fff" opacity=".45" transform="rotate(-30 820.1 -48.3)"/><ellipse cx="916" cy="-2" rx="41.8" ry="4" fill="#191b1f" opacity=".14"/>
+<ellipse cx="916" cy="-42.2" rx="45.8" ry="42.2" fill="#2f8bff" stroke="rgba(25,27,31,.1)"/>
+<ellipse cx="896.8" cy="-62.5" rx="11.0" ry="6.8" fill="#fff" opacity=".45" transform="rotate(-30 896.8 -62.5)"/><ellipse cx="992" cy="-2" rx="27.5" ry="4" fill="#191b1f" opacity=".14"/>
+<ellipse cx="992" cy="-27.8" rx="30.2" ry="27.8" fill="#16c47f" stroke="rgba(25,27,31,.1)"/>
+<ellipse cx="979.3" cy="-41.2" rx="7.2" ry="4.5" fill="#fff" opacity=".45" transform="rotate(-30 979.3 -41.2)"/></svg>
+<span class="ly-balls on"><svg viewBox="0 0 20 20"><circle cx="6" cy="13.5" r="3.5"/><circle cx="13.5" cy="14.5" r="2.5"/><circle cx="11.5" cy="6.5" r="3"/></svg></span></div>
+</div></div>
+            </div>
+            <div class="device-base"><span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Numbers ======================================================== -->
+      <section class="night stats-section" aria-label="Lyra in numbers">
+        <div class="wrap">
+          <dl class="stats">
+            <div data-reveal><dt>44px</dt><dd>The whole interface. One row.</dd></div>
+            <div data-reveal style="--d: 80ms"><dt>1<span class="vega" aria-hidden="true"></span></dt><dd>Colour in the chrome. It means you are here.</dd></div>
+            <div data-reveal style="--d: 160ms"><dt>0</dt><dd>Tiles, feeds or thumbnails.</dd></div>
+            <div data-reveal style="--d: 240ms"><dt>34 KB</dt><dd>The one typeface, bundled.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- 3. Clusters, told in three steps as you scroll ===================== -->
+      <section class="light scrolly cl-scrolly" id="clusters">
+        <div class="scrolly-track" id="cl-track">
+          <div class="scrolly-sticky">
+            <h2 class="headline">Tabs, in clusters.</h2>
+            <div class="cl-demo" id="cl-demo">
+              <div class="ly-window" id="cl-window" style="width: 880px">
+                <div class="ly-titlebar">
+                  <img src="assets/icons/app-icon.svg" alt="" /><span id="cl-title">Lyra</span>
+                  <span class="ly-caption" aria-hidden="true">
+                    <span><svg viewBox="0 0 10 10"><path d="M0 5.5h10" /></svg></span>
+                    <span><svg viewBox="0 0 10 10"><rect x=".5" y=".5" width="9" height="9" rx="1.5" /></svg></span>
+                    <span><svg viewBox="0 0 10 10"><path d="M.5.5l9 9M9.5.5l-9 9" /></svg></span>
+                  </span>
+                </div>
+                <div class="ly-bar">
+  <div class="ly-nav"><span class="ly-btn"><svg viewBox="0 0 16 16"><use href="#i-back" /></svg></span><span class="ly-btn off"><svg viewBox="0 0 16 16"><use href="#i-forward" /></svg></span></div>
+  <div class="ly-field"><span class="ly-field-icon secure"><svg viewBox="0 0 16 16"><use href="#i-lock" /></svg></span><span class="ly-field-line"><span class="ly-host">trains.example</span><span class="ly-title">Departures, Central</span></span><span class="ly-act"><svg viewBox="0 0 16 16"><use href="#i-pin" /></svg></span><span class="ly-act"><svg viewBox="0 0 16 16"><use href="#i-reload" /></svg></span></div>
+  <span class="ly-btn on"><svg viewBox="0 0 16 16"><use href="#i-cluster" /></svg></span>
+  <div class="ly-chips"><span class="ly-chip"><span class="ly-fav" style="background:#2F8BFF">W</span><span>Rain after four</span></span><span class="ly-chip"><span class="ly-fav" style="background:#FF5B45">P</span><span>Return a parcel</span></span><span class="ly-chip"><span class="ly-fav" style="background:#8A5CFF">D</span><span>Array.prototype.at()</span></span><span class="ly-chip"><span class="ly-fav" style="background:#FFC21F">R</span><span>Lemon pasta</span></span><span class="ly-chip"><span class="ly-fav letter">L</span><span>Orders</span></span></div>
+  <span class="ly-btn ly-new"><svg viewBox="0 0 16 16"><use href="#i-plus" /></svg></span>
+</div>
+                <div class="ly-page">
+                  <div class="ly-plane" id="cl-plane">
+                    <svg id="cl-tethers" aria-hidden="true"></svg>
+                    <div class="ly-floor"><span class="ly-floor-label">Not in a cluster</span></div>
+                    <span class="cl-plus" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#i-plus" /></svg></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ol class="steps" id="cl-steps">
+              <li class="on">Tabs in no cluster wait along the floor.</li>
+              <li>Drop them on a cluster, and they hang together.</li>
+              <li>Each cluster is a window. Click one to go there.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Mission: a statement that lights up as you read it ================ -->
+      <section class="night section mission" id="mission">
+        <div class="night-orbs" id="night-orbs" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="wrap section-body">
+          <img class="mission-icon" src="assets/icons/lyra-night-mac-512.png" alt="" width="120" height="120" data-reveal="scale" />
+          <h2 class="headline" data-reveal style="--d: 80ms">Less browser.<br />More web.</h2>
+          <p class="mission-text" id="mission-text">
+            Lyra exists to make browsing light again. Every new idea has to earn its place by saving you a step: one
+            row instead of toolbars, clusters instead of tab piles, one key instead of menus. What's left is quick to
+            open, easy to read, and gone when the errand is done.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <a class="brand" href="./"><img src="assets/icons/favicon.svg" alt="" width="22" height="22" />Lyra</a>
+        <ul>
+          <li><a href="brand/">Brand guidelines</a></li>
+          <li><a href="https://github.com/andrewchampagne/lyra/releases">Releases</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="assets/site.js?v=c59aa30c"></script>
+  </body>
+</html>
